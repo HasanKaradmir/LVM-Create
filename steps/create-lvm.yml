@@ -1,0 +1,28 @@
+---
+- name: Create LVM
+  hosts: target1
+  become: true
+  tasks:
+  - name: vgcreate
+    lvg: 
+      vg: vgdata
+      pvs: /dev/sdb1
+  
+  - name: lvcreate
+    lvol:
+      vg: vgdata
+      lv: dataone
+      size: 100%FREE
+
+  - name: create file system
+    filesystem:
+      fstype: ext4
+      dev: /dev/vgdata/dataone
+
+  - name: mount logical volume
+    mount:
+      name: /lvdata
+      src: /dev/vgdata/dataone
+      fstype: ext4
+      state: mounted
+    

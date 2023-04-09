@@ -1,0 +1,13 @@
+target1 ansible_host=10.227.0.145 ansible_ssh_pass=Parola.123
+target2 ansible_host=10.227.0.146 ansible_ssh_pass=Parola.123
+
+
+[target_group1]
+target1
+
+[target_group2]
+target2
+
+[all_targets:children]
+target_group1
+target_group2

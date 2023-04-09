@@ -1,0 +1,9 @@
+---
+- name: Scan Disk
+  hosts: target1
+  tasks:
+  - name: Scan Disks
+    shell:
+      "rescan-scsi-bus"
+  - debug:
+      msg: ""

@@ -1,0 +1,11 @@
+---
+- name: Create Partition
+  hosts: target1
+  become: true
+  tasks:
+  - name: Create Partition
+    community.general.parted:
+      device: /dev/sdb
+      number: 1
+      flags: [ lvm ]
+      state: present

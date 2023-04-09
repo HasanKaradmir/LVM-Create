@@ -1,0 +1,16 @@
+---
+- name: Install LVM 2
+  hosts: target1
+  tasks:
+  - name: Install LVM 2
+    apt:
+      name: lvm2
+      state: present
+
+- name: Install Rescan-Bus
+  hosts: target1
+  tasks:
+  - name: Install Rescan-Bus
+    apt:
+      name: scsitools
+      state: present
